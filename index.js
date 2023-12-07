@@ -1,6 +1,6 @@
 var finances = [
-  ['Jan-2010', 867884],
-  ['Feb-2010', 984655],
+  ['Jan-2010', 867884], 
+  ['Feb-2010', 984655], 
   ['Mar-2010', 322013],
   ['Apr-2010', -69417],
   ['May-2010', 310503],
@@ -84,7 +84,7 @@ var finances = [
   ['Nov-2016', 795914],
   ['Dec-2016', 60988],
   ['Jan-2017', 138230],
-  ['Feb-2017', 671099],
+  ['Feb-2017', 671099], 
 ];
 
 // This is a nested array. Each string has a nested index item of 0, and each number has a nested index item of 1.
@@ -99,7 +99,7 @@ var finances = [
 // !The net total amount of Profit / Losses over the entire period.
 
 // The average of the changes in Profit / Losses over the entire period.
-    // You will need to track what the total change in Profit / Losses are from month to month and then find the average. Use remainder % for this?
+    // You will need to track what the total change in Profit / Losses are from month to month and then find the average. 
     // (Total / (Number of months - 1))
 
 // The greatest increase in Profit / Losses(date and amount) over the entire period.
@@ -108,8 +108,10 @@ var finances = [
 
 // FUNCTIONING CODE
 console.log('Financial Analysis')
+// calculates total number of months in the dataset
 console.log(`Total months: ${finances.length}`)
 
+// calculates the net total amount of profit/losses over the entire period
 // sum starts at 0 but with each loop, sum has a number from the array added to it, and when the loop runs again, sum is a higher number
 let sum = 0; 
 for (let i = 0; i < finances.length; i++) {
@@ -120,7 +122,22 @@ console.log(`Total: £${sum}`)
 
 
 // TRIAL CODE
-// let remainder = 0;
-// for (let j = 0; j)
+// calculates the change in profits month on month - individual
 
-console.log(finances[1][1]%finances[0][1]);
+// if (finances[j][1] > finances[j++][1]) {
+//     console.log(finances[j][1] - finances[j++][1])
+// }
+// else if (finances [j][1] < finances[j++][1]) {
+// console.log(finances[j++][1] - finances [j][1])
+// }
+
+// now I need to turn the above into a loop... issue with below code is that where we have negative numbers, - -finances is adding them, turning it into a positive.
+for (let j = 0; j < finances.length; j++) {
+  if (finances[j][1] > finances[j+1][1]) {
+    console.log(finances[j][1] - finances[j+1][1]);
+  }
+    else {
+    console.log(finances[j+1][1] - finances[j][1]);
+  }
+}
+
