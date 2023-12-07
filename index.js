@@ -99,7 +99,7 @@ var finances = [
 // !The net total amount of Profit / Losses over the entire period.
 
 // The average of the changes in Profit / Losses over the entire period.
-    // !You will need to track what the total change in Profit / Losses are from month to month and then find the average. 
+    // You will need to track what the total change in Profit / Losses are from month to month and then find the average. 
     // (Total / (Number of months - 1))
 
 // The greatest increase in Profit / Losses(date and amount) over the entire period.
@@ -118,7 +118,7 @@ for (let i = 0; i < finances.length; i++) {
   sum += finances[i][1];
 }
 
-console.log(`Total: £${sum}`)
+console.log(`Total: £${sum}`);
 
 
 // TRIAL CODE
@@ -131,20 +131,16 @@ console.log(`Total: £${sum}`)
 // console.log(finances[j++][1] - finances [j][1])
 // }
 
-// to turn the above into a loop...
-
-// let diffTotal = function() {}
-for (let j = 0; j < finances.length; j++) {
+// to turn the above into a loop and store the results in a new array called 'monthlies'
+let monthlies = [];
+for (let j = 0; j < finances.length - 1; j++) {
   if (finances[j][1] > finances[j+1][1]) {
-    console.log(`- ${finances[j][1] - finances[j+1][1]}`);
+    monthlies.push(`- ${finances[j][1] - finances[j+1][1]}`);
   }
     else {
-    console.log(finances[j+1][1] - finances[j][1]);
+    monthlies.push(finances[j+1][1] - finances[j][1]);
   }
 }
 
-// do I need to turn '-' (to denote decrease in income) into a number?
-
-// HOW DO I SUM EACH ITERATION OF A FOR LOOP?
-
-// console.log(diffTotal)
+// to show the array in the console
+console.log(monthlies)
