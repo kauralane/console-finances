@@ -133,6 +133,7 @@ console.log(`Total: £${sum}`)
 
 // to turn the above into a loop...
 
+// let diffTotal = function() {}
 for (let j = 0; j < finances.length; j++) {
   if (finances[j][1] > finances[j+1][1]) {
     console.log(`- ${finances[j][1] - finances[j+1][1]}`);
@@ -141,9 +142,9 @@ for (let j = 0; j < finances.length; j++) {
     console.log(finances[j+1][1] - finances[j][1]);
   }
 }
-// do I need to turn '-' to denote decrease in income into a number?
+
+// do I need to turn '-' (to denote decrease in income) into a number?
 
 // HOW DO I SUM EACH ITERATION OF A FOR LOOP?
 
-
-// diffTotal / finances.length -1 
+// console.log(diffTotal)
