@@ -1,8 +1,8 @@
 var finances = [
   ['Jan-2010', 867884], 
-  ['Feb-2010', 984655], 
-  ['Mar-2010', 322013],
-  ['Apr-2010', -69417],
+  ['Feb-2010', 984655], //+116774
+  ['Mar-2010', 322013], //-662642
+  ['Apr-2010', -69417], //-391430
   ['May-2010', 310503],
   ['Jun-2010', 522857],
   ['Jul-2010', 1033096],
@@ -99,7 +99,7 @@ var finances = [
 // !The net total amount of Profit / Losses over the entire period.
 
 // The average of the changes in Profit / Losses over the entire period.
-    // You will need to track what the total change in Profit / Losses are from month to month and then find the average. 
+    // !You will need to track what the total change in Profit / Losses are from month to month and then find the average. 
     // (Total / (Number of months - 1))
 
 // The greatest increase in Profit / Losses(date and amount) over the entire period.
@@ -131,13 +131,19 @@ console.log(`Total: £${sum}`)
 // console.log(finances[j++][1] - finances [j][1])
 // }
 
-// now I need to turn the above into a loop... issue with below code is that where we have negative numbers, - -finances is adding them, turning it into a positive.
+// to turn the above into a loop...
+
 for (let j = 0; j < finances.length; j++) {
   if (finances[j][1] > finances[j+1][1]) {
-    console.log(finances[j][1] - finances[j+1][1]);
+    console.log(`- ${finances[j][1] - finances[j+1][1]}`);
   }
     else {
     console.log(finances[j+1][1] - finances[j][1]);
   }
 }
+// do I need to turn '-' to denote decrease in income into a number?
 
+// HOW DO I SUM EACH ITERATION OF A FOR LOOP?
+
+
+// diffTotal / finances.length -1 
