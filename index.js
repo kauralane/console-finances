@@ -190,18 +190,21 @@ for (let n = 0; n <= flattenedArray.length; n += 2) {
 
 console.log(monthlyArray)
 
-let array1 = monthlyArray // months
-let array2 = monthlies // money
+// let array1 = monthlyArray // months
+// let array2 = monthlies // money
 
-console.log(monthlyArray.length);
-console.log(monthlies.length);
+// console.log(monthlyArray.length);
+// console.log(monthlies.length);
 
 // if (array1.length === array2.length) {
-  let changesArray = [];
-  for (let o = 0; o < array1.length; o++) {
-    changesArray.push([array1[o], array2[o]]);
-  }
-  console.log(changesArray);
+  // let changesArray = [];
+  // for (let o = 0; o < array1.length; o++) {
+  //   changesArray.push([array1[o], array2[o]]);
+  // }
+  // console.log(changesArray);
 // } else {
 //   console.log("Arrays are not of the same length.");
 // }
+
+
+// do I need to make it all in currency?
