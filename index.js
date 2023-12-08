@@ -121,26 +121,26 @@ for (let i = 0; i < finances.length; i++) {
 console.log(`Total: £${sum}`);
 
 
-// TRIAL CODE
-// calculates the change in profits month on month - individual
-
-// if (finances[j][1] > finances[j++][1]) {
-//     console.log(finances[j][1] - finances[j++][1])
-// }
-// else if (finances [j][1] < finances[j++][1]) {
-// console.log(finances[j++][1] - finances [j][1])
-// }
-
-// to turn the above into a loop and store the results in a new array called 'monthlies'
+// to run a loop that finds the difference between each month, by minusing the second month from the first, and puts results in the new array called 'monthlies'
 let monthlies = [];
-for (let j = 0; j < finances.length - 1; j++) {
-  if (finances[j][1] > finances[j+1][1]) {
-    monthlies.push(`- ${finances[j][1] - finances[j+1][1]}`);
-  }
-    else {
+for (let j = 0; j < finances.length -1; j++) {
     monthlies.push(finances[j+1][1] - finances[j][1]);
   }
+
+// this shows the new array, the change between each month, in the console. 
+console.log(monthlies);
+
+// this uses the same sum loop as above to add together the newly created monthlies array, which stores the difference in profits/losses month on month.
+let sumMonthlies = 0;
+for (let k = 0; k < monthlies.length; k++) {
+  sumMonthlies += monthlies[k];
 }
 
-// to show the array in the console
-console.log(monthlies)
+// divide the sum of the changes by the number of months to get the average change.
+let total = (sumMonthlies / monthlies.length); 
+// to make the number only go to two decimal places
+let rounded = Math.round(total * 100) / 100; 
+console.log(rounded);
+
+// to print the average change to the log
+console.log(`Average change: £${rounded}`);
