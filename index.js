@@ -1,6 +1,6 @@
 var finances = [
-  ['Jan-2010', 867884], 
-  ['Feb-2010', 984655], //+116774
+  ['Jan-2010', 867884], //finances[0][0][1]
+  ['Feb-2010', 984655], //finances[1][0][1]
   ['Mar-2010', 322013], //-662642
   ['Apr-2010', -69417], //-391430
   ['May-2010', 310503],
@@ -150,6 +150,7 @@ console.log(`Average change: £${rounded}`);
 // TRIAL CODE TO FIND GREATEST & LOWEST CHANGE. But, I need to make the monthlies array now correspond with the first part of the initial finances array, so that each value corresponds to a month.
 
 // print maximum - credit geeksforgeeks.org
+// !will need to re-do this with a new array that includes months that correspond
 {var l;
 var max = monthlies[0];
 for (l = 1; l < monthlies.length; l++)
@@ -160,6 +161,7 @@ console.log(`Greatest increase in profits/losses: ${max}`);
 }
 
 // print minimum - credit geeksforgeeks.org
+// !will need to re-do this with a new array that includes months that correspond
 {
   var m;
   var min = monthlies[0];
@@ -175,3 +177,31 @@ console.log(`Greatest increase in profits/losses: ${max}`);
 // monthlies[y]
 // replace x with y
 
+
+// flattening the finances array so that there is no nested information; elements are listed month, amount, alternating.
+let flattenedArray = finances.flat();
+// console.log(flattenedArray);
+
+// creating a new array made up of every other value in the (now flat) finances array - this creates a new array of only a list of months. This is called monthlyArray. I now need to merge monthlyArray with the monthlies array (which shows difference in earnings between each month.)
+let monthlyArray = [];
+for (let n = 0; n <= flattenedArray.length; n += 2) {
+  monthlyArray.push(flattenedArray[n]);
+}
+
+console.log(monthlyArray)
+
+let array1 = monthlyArray // months
+let array2 = monthlies // money
+
+console.log(monthlyArray.length);
+console.log(monthlies.length);
+
+// if (array1.length === array2.length) {
+  let changesArray = [];
+  for (let o = 0; o < array1.length; o++) {
+    changesArray.push([array1[o], array2[o]]);
+  }
+  console.log(changesArray);
+// } else {
+//   console.log("Arrays are not of the same length.");
+// }
