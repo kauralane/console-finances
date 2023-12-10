@@ -1,8 +1,8 @@
 var finances = [
-  ['Jan-2010', 867884], //finances[0],[0][1]
-  ['Feb-2010', 984655], //finances[1],[0][1]
-  ['Mar-2010', 322013], //-662642 [2],[0][1]
-  ['Apr-2010', -69417], //-391430
+  ['Jan-2010', 867884],
+  ['Feb-2010', 984655],
+  ['Mar-2010', 322013],
+  ['Apr-2010', -69417], 
   ['May-2010', 310503],
   ['Jun-2010', 522857],
   ['Jul-2010', 1033096],
@@ -91,6 +91,7 @@ var finances = [
 console.log('Financial Analysis')
 console.log(`Total months: ${finances.length}`)
 
+
 // Total amount of profits/losses over the period
 let totalProfits = 0
 for (let i = 0; i < finances.length; i++) {
@@ -99,8 +100,9 @@ for (let i = 0; i < finances.length; i++) {
 
 console.log(`Total: £${totalProfits}`)
 
-// Average in changes over the entire period
 
+// Average in changes over the entire period
+  // Creating new array of profits/losses month on month
 let profitsLosses = [];
 for (let i = 1; i < finances.length; i++) {
   let currentMonth = finances[i]
@@ -115,11 +117,49 @@ for (let i = 1; i < finances.length; i++) {
   profitsLosses.push([month, difference])
 }
 
+  // Adding the month on month changes together
 let sum = 0;
 for (let j = 0; j < profitsLosses.length; j++) {
   sum += profitsLosses[j][1]
 }
-
+  // Dividing the total by the number of months / length of the array
 let totalChanges = (sum / (finances.length - 1))
 let rounded = Math.round(totalChanges * 100) / 100;
 console.log(`Average change: £${rounded}`);
+
+
+// Finding the greatest increase in profits
+let maxNumber = 100;
+let maxString = '';
+
+for (let k = 0; k < profitsLosses.length; k++) {
+  let innerArray = profitsLosses[k];
+  if (innerArray.length === 2 && typeof innerArray[0] === 'string' && typeof innerArray[1] === 'number') {
+    let currentNumber = innerArray[1];
+    if (currentNumber > maxNumber) {
+      maxNumber = currentNumber;
+      maxString = innerArray[0];
+    }
+  }
+}
+
+console.log(`Greatest increase in profits: ${maxString} (£${maxNumber})`);
+
+
+// Finding the greatest decrease in profits
+let minNumber = -1;
+let minString = '';
+
+for (let l = 0; l < profitsLosses.length; l++) {
+  let innerArray = profitsLosses[l];
+  if (innerArray.length === 2 && typeof innerArray[0] === 'string' && typeof innerArray[1] === 'number') {
+    let currentNumber = innerArray[1];
+    if (currentNumber < minNumber) {
+      minNumber = currentNumber;
+      minString = innerArray[0];
+    }
+  }
+}
+
+console.log(`Greatest decrease in profits: ${minString} (£${minNumber})`);
+
