@@ -1,7 +1,7 @@
 var finances = [
-  ['Jan-2010', 867884], //finances[0][0][1]
-  ['Feb-2010', 984655], //finances[1][0][1]
-  ['Mar-2010', 322013], //-662642
+  ['Jan-2010', 867884], //finances[0],[0][1]
+  ['Feb-2010', 984655], //finances[1],[0][1]
+  ['Mar-2010', 322013], //-662642 [2],[0][1]
   ['Apr-2010', -69417], //-391430
   ['May-2010', 310503],
   ['Jun-2010', 522857],
@@ -87,124 +87,16 @@ var finances = [
   ['Feb-2017', 671099], 
 ];
 
-// This is a nested array. Each string has a nested index item of 0, and each number has a nested index item of 1.
-// So to access only the number in item 5 of the array, we would use: console.log(finances[5][1])
-
-//! Create a new GitHub repo called Console - Finances. Then, clone it to your computer.
-//! Copy the starter files in your local git repository.
-// You have been given a dataset composed of arrays with two fields, Date and Profit / Losses.
-// Your task is to write JavaScript code that analyzes the records to calculate each of the following:
-
-// !The total number of months included in the dataset.
-// !The net total amount of Profit / Losses over the entire period.
-
-// The average of the changes in Profit / Losses over the entire period.
-    // You will need to track what the total change in Profit / Losses are from month to month and then find the average. 
-    // (Total / (Number of months - 1))
-
-// The greatest increase in Profit / Losses(date and amount) over the entire period.
-// The greatest decrease in Profit / Losses(date and amount) over the entire period.
-
-
-// FUNCTIONING CODE
+// Number of months
 console.log('Financial Analysis')
-// calculates total number of months in the dataset
 console.log(`Total months: ${finances.length}`)
 
-// calculates the net total amount of profit/losses over the entire period - credit freecodecamp.org 
-// sum starts at 0 but with each loop, sum has a number from the array added to it, and when the loop runs again, sum is a higher number
-let sum = 0; 
+// Total amount of profits/losses over the period
+let totalProfits = 0
 for (let i = 0; i < finances.length; i++) {
-  sum += finances[i][1];
+  totalProfits += finances[i][1]
 }
 
-console.log(`Total: £${sum}`);
+console.log(`Total profits: £${totalProfits}`)
 
-
-// to run a loop that finds the difference between each month, by minusing the second month from the first, and puts results in the new array called 'monthlies'
-let monthlies = [];
-for (let j = 0; j < finances.length -1; j++) {
-    monthlies.push(finances[j+1][1] - finances[j][1]);
-  }
-
-// this shows the new array, the change between each month, in the console. 
-// console.log(monthlies);
-
-// this uses the same sum loop as above to add together the newly created monthlies array, which stores the difference in profits/losses month on month.
-let sumMonthlies = 0;
-for (let k = 0; k < monthlies.length; k++) {
-  sumMonthlies += monthlies[k];
-}
-
-// divide the sum of the changes by the number of months to get the average change.
-let total = (sumMonthlies / monthlies.length); 
-// to make the number only go to two decimal places
-let rounded = Math.round(total * 100) / 100; 
-// console.log(rounded);
-
-// to print the average change to the log
-console.log(`Average change: £${rounded}`);
-
-
-
-// TRIAL CODE TO FIND GREATEST & LOWEST CHANGE. But, I need to make the monthlies array now correspond with the first part of the initial finances array, so that each value corresponds to a month.
-
-// print maximum - credit geeksforgeeks.org
-// !will need to re-do this with a new array that includes months that correspond
-{var l;
-var max = monthlies[0];
-for (l = 1; l < monthlies.length; l++)
-  if (monthlies[l] > max)
-    max = monthlies[l];
-
-console.log(`Greatest increase in profits/losses: ${max}`);
-}
-
-// print minimum - credit geeksforgeeks.org
-// !will need to re-do this with a new array that includes months that correspond
-{
-  var m;
-  var min = monthlies[0];
-  for (m = 1; m < monthlies.length; m++)
-    if (monthlies[m] < min)
-      min = monthlies[m];
-
-  console.log(`Greatest decrease in profits/losses: ${min}`);
-}
-
-// PSEUDOCODE: merge my two arrays 
-// finances[0][x]
-// monthlies[y]
-// replace x with y
-
-
-// flattening the finances array so that there is no nested information; elements are listed month, amount, alternating.
-let flattenedArray = finances.flat();
-// console.log(flattenedArray);
-
-// creating a new array made up of every other value in the (now flat) finances array - this creates a new array of only a list of months. This is called monthlyArray. I now need to merge monthlyArray with the monthlies array (which shows difference in earnings between each month.)
-let monthlyArray = [];
-for (let n = 0; n <= flattenedArray.length; n += 2) {
-  monthlyArray.push(flattenedArray[n]);
-}
-
-console.log(monthlyArray)
-
-// let array1 = monthlyArray // months
-// let array2 = monthlies // money
-
-// console.log(monthlyArray.length);
-// console.log(monthlies.length);
-
-// if (array1.length === array2.length) {
-  // let changesArray = [];
-  // for (let o = 0; o < array1.length; o++) {
-  //   changesArray.push([array1[o], array2[o]]);
-  // }
-  // console.log(changesArray);
-// } else {
-//   console.log("Arrays are not of the same length.");
-// }
-
-
-// do I need to make it all in currency?
+// Average in changes over the entire period
