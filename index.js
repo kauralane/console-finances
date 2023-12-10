@@ -97,6 +97,29 @@ for (let i = 0; i < finances.length; i++) {
   totalProfits += finances[i][1]
 }
 
-console.log(`Total profits: £${totalProfits}`)
+console.log(`Total: £${totalProfits}`)
 
 // Average in changes over the entire period
+
+let profitsLosses = [];
+for (let i = 1; i < finances.length; i++) {
+  let currentMonth = finances[i]
+  let prevMonth = finances[i - 1];
+
+  let month = currentMonth[0];
+  
+  let currentAmount = currentMonth[1];
+  let prevAmount = prevMonth[1]
+
+  let difference = currentAmount - prevAmount
+  profitsLosses.push([month, difference])
+}
+
+let sum = 0;
+for (let j = 0; j < profitsLosses.length; j++) {
+  sum += profitsLosses[j][1]
+}
+
+let totalChanges = (sum / (finances.length - 1))
+let rounded = Math.round(totalChanges * 100) / 100;
+console.log(`Average change: £${rounded}`);
