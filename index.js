@@ -87,12 +87,14 @@ var finances = [
   ['Feb-2017', 671099], 
 ];
 
-// Number of months
+// Number of months 
+  // Uses .length to give the array length
 console.log('Financial Analysis')
 console.log(`Total months: ${finances.length}`)
 
 
-// Total amount of profits/losses over the period
+// Total amount of profits/losses over the period. 
+  // Uses a for loop to iterate over the numbers in the array and add the previous number to the total each time it iterates
 let totalProfits = 0
 for (let i = 0; i < finances.length; i++) {
   totalProfits += finances[i][1]
@@ -100,66 +102,59 @@ for (let i = 0; i < finances.length; i++) {
 
 console.log(`Total: £${totalProfits}`)
 
-
 // Average in changes over the entire period
-  // Creating new array of profits/losses month on month
+  // Creates a new array called profitsLosses, and pushes the change in profits/losses and corresponding month into this array. Has to declare separate variables for month and number, using their index numbers (month = 0, number = 1), to keep track of the month and number in the same array.
 let profitsLosses = [];
-for (let i = 1; i < finances.length; i++) {
-  let currentMonth = finances[i]
-  let prevMonth = finances[i - 1];
-
-  let month = currentMonth[0];
-  
-  let currentAmount = currentMonth[1];
-  let prevAmount = prevMonth[1]
-
-  let difference = currentAmount - prevAmount
-  profitsLosses.push([month, difference])
+for (let j = 0; j < finances.length - 1; j++) {
+  let change = (finances[j + 1][1] - finances[j][1])
+  let months = (finances[j + 1][0])
+  profitsLosses.push([months, change]);
 }
 
-  // Adding the month on month changes together
+  // Added the month on month changes together, using the same for loop as above. 
 let sum = 0;
 for (let j = 0; j < profitsLosses.length; j++) {
   sum += profitsLosses[j][1]
 }
-  // Dividing the total by the number of months / length of the array
+
+  // Divided the total by the number of months (which can be accessed using .length). 
+  // Rounded the number to the nearest one hundredth using the .round function. Then had to divide this by 100 to get it to two decimal places. 
 let totalChanges = (sum / (finances.length - 1))
 let rounded = Math.round(totalChanges * 100) / 100;
 console.log(`Average change: £${rounded}`);
 
 
-// Finding the greatest increase in profits
-let maxNumber = 100;
-let maxString = '';
+// Finding the greatest increase in profits. 
+  // Start by declaring maxProfit and month as empty and 0 so there is a starting point. 
+  // Use for loop to iterate over the sub-arrays in the profitsLosses array. Use separate variables for month and profit to keep track of the current month as well as the current highest profit.
+let maxProfit = 0
+let maxMonth = '';
 
 for (let k = 0; k < profitsLosses.length; k++) {
-  let innerArray = profitsLosses[k];
-  if (innerArray.length === 2 && typeof innerArray[0] === 'string' && typeof innerArray[1] === 'number') {
-    let currentNumber = innerArray[1];
-    if (currentNumber > maxNumber) {
-      maxNumber = currentNumber;
-      maxString = innerArray[0];
-    }
+  let monthAndProfit = profitsLosses[k]; 
+    let currentProfit = monthAndProfit[1];
+    if (currentProfit > maxProfit) {
+      maxProfit = currentProfit;
+      maxMonth = monthAndProfit[0];
   }
 }
 
-console.log(`Greatest increase in profits: ${maxString} (£${maxNumber})`);
+console.log(`Greatest increase in profits: ${maxMonth} (£${maxProfit})`);
 
 
-// Finding the greatest decrease in profits
-let minNumber = -1;
-let minString = '';
+// As above, but finding the greatest decrease in profits. 
+let minProfit = 0;
+let minMonth = '';
 
 for (let l = 0; l < profitsLosses.length; l++) {
-  let innerArray = profitsLosses[l];
-  if (innerArray.length === 2 && typeof innerArray[0] === 'string' && typeof innerArray[1] === 'number') {
-    let currentNumber = innerArray[1];
-    if (currentNumber < minNumber) {
-      minNumber = currentNumber;
-      minString = innerArray[0];
-    }
+  let monthAndProfit = profitsLosses[l];
+  let currentProfit = monthAndProfit[1];
+  if (currentProfit < minProfit) {
+    minProfit = currentProfit;
+    minMonth = monthAndProfit[0];
   }
 }
 
-console.log(`Greatest decrease in profits: ${minString} (£${minNumber})`);
+console.log(`Greatest decrease in profits: ${minMonth} (£${minProfit})`);
+ 
 
