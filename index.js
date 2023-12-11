@@ -103,7 +103,7 @@ for (let i = 0; i < finances.length; i++) {
 console.log(`Total: £${totalProfits}`)
 
 // Average in changes over the entire period
-  // Creates a new array called profitsLosses, and pushes the change in profits/losses and corresponding month into this array. Has to declare separate variables for month and number, using their index numbers (month = 0, number = 1), to keep track of the month and number in the same array.
+  // Creates a new array called profitsLosses, and pushes the change in profits/losses and corresponding month into this array. Has to declare separate variables for month and number, using their index numbers to keep track of the month and number in the same array.
 let profitsLosses = [];
 for (let j = 0; j < finances.length - 1; j++) {
   let change = (finances[j + 1][1] - finances[j][1])
@@ -156,5 +156,4 @@ for (let l = 0; l < profitsLosses.length; l++) {
 }
 
 console.log(`Greatest decrease in profits: ${minMonth} (£${minProfit})`);
- 
 
