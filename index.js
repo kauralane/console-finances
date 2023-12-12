@@ -118,10 +118,9 @@ for (let j = 0; j < profitsLosses.length; j++) {
 }
 
   // Divided the total by the number of months (which can be accessed using .length). 
-  // Rounded the number to the nearest one hundredth using the .round function. Then had to divide this by 100 to get it to two decimal places. 
+  // Showed only to 2 decimal places by using .toFixed(2)
 let totalChanges = (sum / (finances.length - 1))
-let rounded = Math.round(totalChanges * 100) / 100;
-console.log(`Average change: £${rounded}`);
+console.log(`Average change: £${totalChanges.toFixed(2)}`);
 
 
 // Finding the greatest increase in profits. 
